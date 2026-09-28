@@ -1,0 +1,21 @@
+<script>
+(function () {
+  window.dataLayer = window.dataLayer || [];
+  var price = Number('{{product.price.without_tax.value}}') || 0;
+  dataLayer.push({ ecommerce: null });
+  dataLayer.push({
+    event: 'view_item',
+    ecommerce: {
+      currency: '{{currency_selector.active_currency_code}}',
+      value: price,
+      items: [{
+        item_id: '{{product.id}}',
+        item_name: {{json product.title}},
+        item_brand: {{json product.brand.name}},
+        price: price,
+        quantity: 1
+      }]
+    }
+  });
+})();
+</script>
